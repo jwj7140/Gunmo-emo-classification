@@ -1,2 +1,2 @@
 # modu-emo-classfication
-modu-emo-classification: 한국어 감정 다중 분류 모델 제작법
+본 문서는 polyglot-ko, llama2 등 decoder 모델을 사용하여 다중 분류 모델을 제작하는 방법에 대해 서술합니다.
