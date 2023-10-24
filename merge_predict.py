@@ -25,14 +25,14 @@ with open(args.predict_file, encoding='utf-8') as f:
 
 
 point = {
-    "joy":33.1,     #4498
-    "anticipation": 18.4, #4532
-    "trust":35.7, #4593
-    "surprise":21.0, #4661
-    "disgust":26.5,  #4672
-    "fear":56.4, #4704
-    "anger":35.2,  #4670
-    "sadness":50.8  #4650
+    "joy":33.1,     #TP+TN:4498
+    "anticipation": 18.4, #TP+TN:4532
+    "trust":35.7, #TP+TN:4593
+    "surprise":21.0, #TP+TN:4661
+    "disgust":26.5,  #TP+TN:4672
+    "fear":56.4, #TP+TN:4704
+    "anger":35.2,  #TP+TN:4670
+    "sadness":50.8  #TP+TN:4650
 }
 #위 백분율은 자체 제작 모델에 최적화되어 있습니다. percent_simulation.py의 출력을 바탕으로 point를 수정하세요.
 
