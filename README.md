@@ -1,4 +1,4 @@
-# modu-emo-classfication
+# Gunmo-emo-classfication
 본 문서는 [2023년 국립국어원 인공 지능 언어 능력 평가: 감성 분석 과제](https://corpus.korean.go.kr/taskOrdtm/taskList.do?taskOrdtmId=103&clCd=END_TASK&subMenuId=sub01)의 "사과는맛있어맛있으면바나나"팀의 모델 제작법에 관해 서술합니다.
 
 본 제작법은 [polyglot-ko](https://huggingface.co/EleutherAI/polyglot-ko-12.8b), [llama-2-ko](https://huggingface.co/beomi/llama-2-ko-7b) 등 decoder 모델을 사용하여 다중 분류 모델 제작이 가능합니다.
