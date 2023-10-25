@@ -85,21 +85,21 @@ class maskTrainer(Trainer):
 
 ### 설정
 
-저희는 [polyglot-ko-12.8b](https://huggingface.co/EleutherAI/polyglot-ko-12.8b)을 추가 학습시켰습니다.
-
 학습 비용 절약을 위해 4bit [qlora](https://github.com/artidoro/qlora)를 사용해 학습합니다. 주요 세팅은 다음과 같습니다.
 
-- rank: 16
+- 베이스모델: [EleutherAI/polyglot-ko-12.8b](https://huggingface.co/EleutherAI/polyglot-ko-12.8b)
 
-- alpha: 32
+- lora-rank: 16
 
-- target modules: "query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"
+- lora-alpha: 32
+
+- target_modules: "query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"
 
 - dropout: 0.01
 
-- batch size: 2
+- batch_size: 2
 
-- learning rate: 2e-4
+- learning_rate: 2e-4
 
 - epoch: 4
 
@@ -145,6 +145,7 @@ def gen(text="", target=""):
         dic.append(round(np.exp(transition_scores[0][0].numpy())*100,2))
     return dict(zip(emo_name,dic))
     #각 감정에 대한 확률값을 반환합니다.
+#아래 문장은 대회 데이터셋에 포함되지 않습니다. 
 gen(text="임시완의 연기 어디까지 성장할 것인가...!! 미래가 너무 기대되는 배우입니다", target="임시완의 연기")
 ```
 ```
@@ -163,7 +164,7 @@ gen(text="임시완의 연기 어디까지 성장할 것인가...!! 미래가 �
 
 ### dev 데이터를 이용한 기준 시뮬레이션
 
-이전 단계까지 문장에서 대상에 대한 감정의 확률값을 구했지만, 몇 퍼센트 이상의 확률을 True라 표기할지의 기준이 명확하지 않습니다. 그렇기 때문에, 여기선 dev 데이터에서 추론한 결과와 정답을 비교하여 최적의 확률 기준을 탐색합니다.
+이전 단계까지 문장에서 대상에 대한 감정의 확률값을 구했지만, 몇 퍼센트 이상의 확률을 True라 표기할지의 기준이 명확하지 않습니다. 그렇기 때문에, 여기선 dev 데이터에서 추론한 결과와 정답을 비교하여 **최적의 확률 기준을 탐색**합니다.
 
 ```
 python percent_simulation.py --predict-file dev_data_clean_predict.json --answer-file nikluge-ea-2023-dev.jsonl
@@ -202,9 +203,15 @@ point = {
 }
 ```
 
-## 결과 병합
+## test 추론 결과 병합
 
 찾은 확률 기준으로 [merge_predict.py](./merge_predict.py)를 수정 후 실행합니다.
 ```
 python merge_predict.py --test_file nikluge-ea-2023-test.jsonl --predict-file test_data_clean_predict.json --output-file nikluge-ea-2023-test_predict.jsonl
 ```
+
+### 평가 결과
+
+위와 같은 방법을 따라 모델을 제작하여 **F1-score 90.19**점으로 대회 리더보드 2위를 기록했습니다.
+
+![leaderboard](./assets/leaderboard.png)
