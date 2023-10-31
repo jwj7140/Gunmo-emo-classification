@@ -14,14 +14,14 @@
 
 ## 데이터 전처리
 ```
-python convert_data.py --input-file nikluge-ea-2023-train.jsonl --output-file train_data_clean.json
+python convert_data_train.py --input-file nikluge-ea-2023-train.jsonl --output-file train_data_clean.json
 python convert_data.py --input-file nikluge-ea-2023-dev.jsonl --output-file dev_data_clean.json
 python convert_data.py --input-file nikluge-ea-2023-test.jsonl --output-file test_data_clean.json
 ```
 
-데이터의 "joy", "anticipation", "trust", "surprise", "disgust", "fear", "anger", "sadness"를 각각 "기쁨", "기대", "신뢰", "당황", "혐오", "공포", "분노", "슬픔"으로 전처리합니다. 이들은 [polyglot-ko](https://huggingface.co/EleutherAI/polyglot-ko-12.8b) 및 [llama-2-ko](https://huggingface.co/beomi/llama-2-ko-7b)의 tokenizer에서 1토큰으로 계산됩니다.
+학습 데이터의 "joy", "anticipation", "trust", "surprise", "disgust", "fear", "anger", "sadness"를 각각 "기쁨", "기대", "신뢰", "당황", "혐오", "공포", "분노", "슬픔"으로 전처리합니다. 이들은 [polyglot-ko](https://huggingface.co/EleutherAI/polyglot-ko-12.8b) 및 [llama-2-ko](https://huggingface.co/beomi/llama-2-ko-7b)의 tokenizer에서 1토큰으로 계산됩니다.
 
-이때, 여러 감정이 포함된 데이터의 경우, 포함된 감정 만큼 데이터를 추가합니다. 아래는 전처리 예시입니다.
+이때, 여러 감정이 포함된 데이터의 경우, 포함된 감정 만큼 데이터를 추가합니다. 아래는 학습 데이터의 전처리 예시입니다.
 
 ```
 {
