@@ -3,6 +3,11 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 import numpy as np
 import json
+import argparse
+
+parser = argparse.ArgumentParser(description="inference code")
+parser.add_argument("--type", type=str, help="Type to inference(test or dev)", default="test")
+args = parser.parse_args()
 
 #모델을 불러옵니다.
 model_id = "EleutherAI/polyglot-ko-12.8b"
@@ -68,5 +73,4 @@ def generate(type):
         json.dump(predict, json_file, indent=2, ensure_ascii=False)
     
 
-generate("test")
-generate("dev")
+generate(args.type)

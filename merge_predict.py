@@ -4,7 +4,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description="merging prediction code")
-parser.add_argument("--test_file", type=str, help="Filename to merge(jsonl)", default="nikluge-ea-2023-test.jsonl")
+parser.add_argument("--test-file", type=str, help="Filename to merge(jsonl)", default="nikluge-ea-2023-test.jsonl")
 parser.add_argument("--predict-file", type=str, help="name of prediction file(json)", default="test_data_clean_predict.json")
 parser.add_argument("--output-file", type=str, help="Filename to save(jsonl)", default="nikluge-ea-2023-test_predict.jsonl")
 args = parser.parse_args()
