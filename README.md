@@ -12,6 +12,19 @@
 {"id": "1", "input": {"form": "라면 먹고싶다.", "target": {"form": "라면", "begin": 0, "end": 2}}, "output": ""}
 ```
 
+## Requirements
+```
+pip install torch
+pip install bitsandbytes
+pip install transformers
+pip install peft
+pip install accelerate
+pip install jsonlines
+pip install scipy
+pip install tensorboard
+pip install datasets
+```
+
 ## 데이터 전처리
 ```
 python convert_data_train.py --input-file nikluge-ea-2023-train.jsonl --output-file train_data_clean.json
