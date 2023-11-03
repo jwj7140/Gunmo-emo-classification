@@ -14,7 +14,6 @@
 
 ## Requirements
 ```
-pip install torch
 pip install bitsandbytes
 pip install transformers
 pip install peft
